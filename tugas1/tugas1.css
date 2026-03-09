@@ -1,0 +1,47 @@
+*{
+    box-sizing:border-box;
+    font-family:'Times New Roman', Times, serif;
+}
+body{
+    background-color: blue;
+}
+.container{
+    width: 90V;
+    max-width: 680px;
+    padding: 2em 1.5em;
+    background-color: aliceblue;
+    margin: 1em auto;
+    border-radius: 0.5em;
+} 
+h2{
+    font-size: 0.5em 0;
+    text-align: center;
+}
+.input{
+    margin: 0.5em 0;
+}
+label{
+    margin-bottom: 0.5em;
+    font-weight: 500;
+}
+input, button{
+    display: block;
+    outline: none;
+    width: 100%;
+    padding: 0.5em;
+    border-radius: 0.3em;
+} 
+input{
+    padding: 1em;
+}
+button{
+    font-size: 1em;
+    background-color: blue;
+    border: none;
+    color: aliceblue;
+    padding: 0.8em 0;
+    margin-top: 2em;
+}
+.sembunyi{
+    color: red;
+}
