@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form pendaftaran Lomba Catur</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css-form-catur.css">
+<body>
+    <div class="container">
+        <h2>From pendaftaran Lomba Catur</h2>
+        <table>
+            <tr>
+                <th>Field</th>
+                <th>keterangan</th>
+            </tr>
+            <tr>
+                <td>nama</td>
+                <td>
+                    <div class="input"> 
+                        <input id="nama" type="text" placeholder="Masukkan Nama">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>Usia</td>
+                <td>
+                    <div class="input">
+                        <input id="usia" type="number" min="0" value="0">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>Sesi Lomba</td>
+                <td>
+                    <div class="input">
+                        <select id="sesi" class="input">
+                            <option value="1">Pagi</option>
+                            <option value="2">Siang</option>
+                            <option value="3">Sore</option>
+                        </select>
+                        
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>Asal Sekolah</td>
+                <td>
+                    <div class="input">
+                        <input id="sekolah" type="text" placeholder="Masukkan Asal Sekolah">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>Jenis Kelamin</td>
+                <td>
+                    <div class="input">
+                        <table>
+                            <tr>
+                                <td class="td1"><input type="radio" name="kl" class="kelamin" value="1">Laki-laki</td>
+                                 <td class="td1"><input type="radio" name="kl" class="kelamin" value="2">Perempuan</td>
+                            </tr>
+                        </table>
+                        
+                       
+                    </div>
+                </td>    
+        </table>
+        <button id="tombol">Kirim</button>
+    </div>
+
+    <script src="js-from-catur.js"></script>
+</body>
+</html>
