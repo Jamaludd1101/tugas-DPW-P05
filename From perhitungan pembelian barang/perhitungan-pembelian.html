@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Perhitungan Pembelian Barang</title>
+    <link rel="stylesheet" href="perhitungan-pemblian.css">
+    <script src="https://code.jquery.com/jquery-4.0.0.js" integrity="sha256-9fsHeVnKBvqh3FB2HYu7g2xseAZ5MlN6Kz/qnkASV8U=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <form novalidate>
+            <h2>Form Perhitungan Pembelian Barang</h2>
+            <table>
+                <tr>
+                    <th>Field</th>
+                    <th>Keterangan</th>
+                </tr>
+                <tr>
+                    <td>Nama Barang</td>
+                    <td>
+                        <input id="barang" type="text" placeholder="Masukkan nama barang">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Tanggal Beli</td>
+                    <td>
+                        <input id="tanggal" type="date">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Jumlah</td>
+                    <td>
+                        <input id="jumlah" type="number"  min="0">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Harga</td>
+                    <td>
+                        <input id="harga" type="number" min="0">
+                    </td>
+                </tr>
+                <tr>
+                    <td>PPh</td>
+                    <td>
+                        <input id="pph" type="number" min="0" max="100">
+                    </td>
+                </tr>
+                <tr>
+                    <td>PPN</td>
+                    <td>
+                        <input id="ppn" type="number" min="0" max="100">
+                    </td>
+                </tr>
+            </table>
+            
+            <button id="hitung">Hitung</button>
+
+            <input type="reset" id="reset">
+
+            <table id="tabel-hitung" class="hasil">
+                <tr>
+                    <td>Subtotal</td>
+                    <td>Rp <span id="hasil-subtotal" >0</span></td>
+                </tr>
+                <tr>
+                    <td>Nilai PPH</td>
+                    <td>Rp <span id="nilai-pph">0</span></td>
+                </tr>
+                <tr>
+                    <td>Nilai PPN</td>
+                    <td>Rp <span id="nilai-ppn">0</span></td>
+                </tr>
+                <tr id="text-total">
+                    <td >Total bayar</td>
+                    <td>Rp <span id="total-bayar">0</span></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <script src="perhitungan-pembelian.js"></script>
+</body>
+</html>
