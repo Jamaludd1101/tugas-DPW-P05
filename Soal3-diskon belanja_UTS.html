@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UTS3</title>
+    <script src="https://code.jquery.com/jquery-4.0.0.js" integrity="sha256-9fsHeVnKBvqh3FB2HYu7g2xseAZ5MlN6Kz/qnkASV8U=" crossorigin="anonymous"></script>
+    <style>
+        *{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100hv;
+    padding: 20px;
+}
+.container{
+    width: 100%;
+    max-width: 680px;
+    padding: 2em 1.5em;
+    background-color: rgb(225, 225, 225);
+    padding: 2em;
+    margin: 1em auto;
+    border-radius: 12px;
+}
+h2{
+    text-align: center;
+    margin-bottom: 1.5em;
+}
+table{
+    border-collapse: collapse;
+    margin-left: 60px;
+    width: 80%;
+    border-collapse: separate;
+}
+th,td{
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #1f8cb1;
+}
+th{
+    background-color: #f8f9fa;
+    border-radius: 12px;
+}
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+}
+input, button{
+    display: block;
+    outline: none;
+    width: 100%;
+    padding: 0.5em;
+    border-radius: 0.3em;
+} 
+button{
+    font-size: 1em;
+    background-color: blue;
+    border: none;
+    color: aliceblue;
+    padding: 0.8em 0;
+    margin-top: 2em;
+}
+#reset{
+    font-size: 1em;
+    background-color: red;
+    border: none;
+    color: aliceblue;
+    padding: 0.8em 0;
+    margin-top: 3px;
+}
+#tabel-hitung{
+    margin-top: 30px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+}
+#total-bayar,#text-total{
+    color: red;
+    font-size: 1.1em;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form novalidate>
+            <h2>Form Sistem diskon belanja</h2>
+            <table>
+                <tr>
+                    <th>Field</th>
+                    <th>Keterangan</th>
+                </tr>
+                <tr>
+                    <td>Nama Barang</td>
+                    <td>
+                        <input id="barang" type="text" placeholder="Masukkan nama barang">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Jumlah</td>
+                    <td>
+                        <input id="jumlah" type="number"  min="0">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Harga</td>
+                    <td>
+                        <input id="harga" type="number" min="0">
+                    </td>
+                </tr>
+                <tr>
+                <tr>
+                    <td>Diskon</td>
+                    <td>
+                        <input id="diskon" type="number" min="0" max="100">
+                    </td>
+                </tr>
+            </table>
+            
+            <button id="hitung">Hitung</button>
+
+            <input type="reset" id="reset">
+
+            <table id="tabel-hitung" class="hasil">
+                <tr>
+                    <td>Subtotal</td>
+                    <td>Rp <span id="hasil-subtotal" >0</span></td>
+                </tr>
+                <tr>
+                    <td>Diskon</td>
+                    <td>Rp <span id="nilai-diskon">0</span></td>
+                </tr>
+                <tr id="text-total">
+                    <td >Total bayar</td>
+                    <td>Rp <span id="total-bayar">0</span></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+<script>
+    $(document).ready(function(){
+    $(".hasil").hide();
+
+    $("#hitung").click(function(e){
+        e.preventDefault();
+
+        let barang = $("#barang").val();
+        let tanggal = $("#tanggal").val();
+        let harga = parseInt($("#harga").val()) ||0 ;
+        let jumlah = parseInt($("#jumlah").val()) || 0;
+        let diskon = parseInt($("#diskon").val())|| 0;
+        
+        if(barang === ""){
+            alert("Nama barang harus diisi!");
+            return;
+        }
+        if(jumlah < 1){
+            alert("Jumlah barang minimal 1!");
+            return;
+        }
+        if(harga === 0){
+            alert("harga tidak boleh kosong");
+            return;
+        }
+
+        let subtotal = (harga*jumlah);
+
+        $("#hasil-subtotal").text(subtotal); 
+
+        let nilaidiskon = Math.ceil(subtotal*(diskon/100));
+        
+        $("#nilai-diskon").text(nilaidiskon);
+
+        let totalbayar = subtotal - nilaidiskon;
+
+        $("#total-bayar").text(totalbayar);
+
+        $(".hasil").show();
+
+        });
+
+        $(("#reset")).click(function(){
+            $(".hasil").hide();
+        });
+    });
+</script>
+</body>
+</html>
