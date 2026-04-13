@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UTS</title>
+    <script src="https://code.jquery.com/jquery-4.0.0.js" integrity="sha256-9fsHeVnKBvqh3FB2HYu7g2xseAZ5MlN6Kz/qnkASV8U=" crossorigin="anonymous"></script>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            justify-content: center;
+            padding: 50px;
+        }
+        .container{
+            width: 90vw;
+            max-width: 9000px;
+            padding: 2em 1.5em;
+            background-color: rgb(22, 137, 238);
+            margin: 1em auto;
+            border-radius: 0.5em;
+        } 
+        h2{
+            color: aliceblue;
+            text-align: center;
+        }
+        input, button,select{
+            display: block;
+            outline: none;
+            width: 100%;
+            padding: 0.5em;
+            border-radius: 0.3em;
+        } 
+        .input{
+            margin: 0.5em 0;
+        }
+        #harga{
+            color: rgb(255, 0, 0);
+        }
+        button{
+            font-size: 1em;
+            background-color: blue;
+            border: none;
+            color: aliceblue;
+            padding: 0.8em 0;
+            margin-top: 12px;
+            border-radius: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form novalidate>
+            <h2>From Pemesanan Makanan</h2>
+            <div class="input">
+                <label for="nama">Nama :</label>
+                <input type="text" id="nama" placeholder="Masukkan nama">
+            </div>
+            <div class="input">
+                <label for="meja">Meja :</label>
+                <input type="number" id="meja" min="1" max="50" placeholder="Masukkan No. meja">
+            </div>
+            <div class="input">
+                <label for="menu">Jenis Menu :</label>
+                <select name="menu" id="menu">
+                    <option value="0">--Pilih Menu--</option>
+                    <option value="1">Makanan</option>
+                    <option value="2">Minuman</option>
+                </select>
+            </div>
+            <div>
+                <label class="menu" id="teks-menu">List Menu :</label>
+                <select id="makanan" class="menu pesan">
+                    <option value="0">--Pilih Makanan--</option>
+                    <option value="10000">Soto ayam</option>
+                    <option value="12000">Lele goreng</option>
+                    <option value="17000">Ayam goreng</option>
+                    <option value="13000">Belut goreng</option>
+                    <option value="15000">Sate ayam</option>
+                    <option value="16000">Sop ayam</option>
+                </select>
+                <select id="minuman" class="menu pesan">
+                    <option value="0">--Pilih Minuman--</option>
+                    <option value="3000">Es teh</option>
+                    <option value="3000">teh hangat</option>
+                    <option value="5000">Es jeruk</option>
+                    <option value="5000">Jeruk hangat</option>
+                    <option value="6000">Es degan</option>
+                    <option value="8000">Es campur</option>
+                </select>
+                <div id="harga">
+                    <label>Harga :</label>
+                    Rp <span id="hasil">0</span>
+                </div>
+
+                <button id="pesan">Pesan</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        $(document).ready(function(){
+            $('.menu,#harga').hide();
+
+
+            $('#menu').on('change', function() {
+            let jenis = $(this).val();
+            $('#hasil').text('0'); 
+            $('.list-item').val('0');
+
+            if (jenis == "0") {
+                $('#section-pilihan').fadeOut();
+            } else {
+                $('#section-pilihan').fadeIn();
+                if (jenis == "1") {
+                    $('#makanan,#teks-menu,#harga').show();
+                    $('#minuman').hide();
+                } else {
+                    $('#minuman,#teks-menu,#harga').show();
+                    $('#makanan').hide();
+                }
+            }
+            });
+
+            $('.pesan').on('change', function() {
+            let harga = $(this).val();
+            $('#hasil').text(harga);
+            });
+
+            $('#pesan').click(function(){
+                var nama = $('#nama').val();
+                var meja = $('#meja').val();
+                var menu = $('#menu').val();
+                var makanan = $('#makanan').val();
+                var minuman = $('#minuman').val();
+                if(nama == ""){
+                    alert('Nama tidak boleh kosong')
+                    return;
+                }else{
+                    if(nama.length < 2 ){
+                    alert("Nama tidak boleh kurang dari 2 digit");
+                    return;
+                    }
+                    if(nama.length > 50){
+                    alert("Nama tidak boleh lebih dari 50 digit");
+                    return;
+                    }
+                }
+                if(meja == ""){
+                    alert('Meja tidak boleh kosong')
+                    return;
+                }
+                if(makanan <= 0){
+                    alert('Menu tidak boleh kosong')
+                }
+                else{
+                    alert('berhasil pesan')
+                }
+            });
+        });
+    </script>
+</body>
+</html>
